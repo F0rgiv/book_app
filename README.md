@@ -7,16 +7,20 @@
 Application for searching book information and displaing that to a user
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+run
+```npm install to install requred dependancies.```
+
+Ensure you have the local env keys.
+PORT =port
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+This application uses express, ejs, superagent and dotenv to dynamically retreive book information from the web and format it into a view for the end user.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
-
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+3/1/2021:
+- Adds new search urel for books here <APP_URL>/searches/new
+- Adds constructors for a book object
+- Adds route for future homepage
+- Adds initial styling
+- Adds new view page for showing results for your search
+- Adds a error page that is desplayed showing any errors to a user if they occure.
