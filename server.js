@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 const superagent = require('superagent');
 const path = require('path')
+const client = require('./client');
 
 
 // ======================================= app config =======================================
@@ -53,8 +54,9 @@ function getBook(req, res) {
 app.use('*', (request, response) => response.send('Sorry, that route does not exist.'));
 
 //constructors
-
 function Book(obj) {
+    this.id = obj.id;
+    this.isbn = obj.isbn;
     this.img = obj.imageLinks ? obj.imageLinks.thumbnail : "https://i.imgur.com/J5LVHEL.jpg";
     this.title = obj.title;
     this.author = obj.authors[0];
