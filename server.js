@@ -21,7 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', home);
 app.get('/hello', home);
 app.get('/searches/new', getBookQurie)
-app.post('/searches/new', getBook)
+app.post('/searches/new', getBooks)
+// app.post('/book/:id', getBook) access with req.perams.id
+// app.post('/book', saveBook)
 
 // ======================================= Rout Handelars =======================================
 
@@ -41,7 +43,7 @@ function getBookQurie(req, res) {
     res.render('pages/searches/new')
 };
 
-function getBook(req, res) {
+function getBooks(req, res) {
     superagent.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.search}:${req.body.search_string}`)
         .then(data => {
             const books = data.body.items.map(book => new Book(book.volumeInfo));
@@ -49,17 +51,34 @@ function getBook(req, res) {
         }).catch(handelError(res));
 };
 
+function insertArrIntoSql(arr, tableAndFields) {
+    // create db querie settings
+    let sqlInsert = `INSERT INTO ${tableAndFields} VALUES(`;
+    // Add $n and closing )
+    arr.forEach(element, index => sqlInsert.concat(`$${index + 1} `)).concat(')');
+
+    const sqlInsertArray = [
+        cityName,
+        location.display_name,
+        parseFloat(location.lat),
+        parseFloat(location.lon)
+    ];
+    // save in the db
+    client.query(sqlInsert, sqlInsertArray);
+    //send result to client
+    res.status(200).send(new Location(location, cityName));
+}
 
 //catchall / 404
 app.use('*', (request, response) => response.send('Sorry, that route does not exist.'));
 
 //constructors
 function Book(obj) {
-    this.id = obj.id;
+    this.id = obj.id ? obj.id: '';
     this.isbn = obj.isbn;
-    this.img = obj.imageLinks ? obj.imageLinks.thumbnail : "https://i.imgur.com/J5LVHEL.jpg";
+    this.img_url = obj.imageLinks ? obj.imageLinks.thumbnail : "https://i.imgur.com/J5LVHEL.jpg";
     this.title = obj.title;
-    this.author = obj.authors[0];
+    this.author = obj.authors ? obj.authors[0]: 'Unknown author';
     this.description = obj.description;
 }
 
