@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ======================================= routs =======================================
 
+app.get('/', home);
 app.get('/hello', home);
 app.get('/searches/new', getBookQurie)
 app.post('/searches/new', getBook)
@@ -26,7 +27,7 @@ app.post('/searches/new', getBook)
 function handelError(res) {
     return err => {
         // let user know we messed up
-        res.status(500).send("Sorry, something went very wrong");
+        res.status(500).render("pages/error", {err: err});
     };
 }
 
@@ -44,7 +45,7 @@ function getBook(req, res) {
         .then(data => {
             const books = data.body.items.map(book => new Book(book.volumeInfo));
             res.render('pages/searches/show', { books: books })
-        });
+        }).catch(handelError(res));
 };
 
 
