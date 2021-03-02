@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book browser</title>
+    <link rel="stylesheet" href="../../static/styles/reset.css">
+    <link rel="stylesheet" href="../../static/styles/base.css">
+    <link rel="stylesheet" href="../../static/styles/layout.css">
+    <link rel="stylesheet" href="../../static/styles/modules.css">
+</head>
+
+<body>
+    <header>
+        <h1>best books!</h1>
+    </header>
+    <div>
+        Search by Title or Auther
+    </div>
+    <form action="/searches/new" method="POST">
+        <input type="text" name="search_string", placeholder="Enter your search string">
+        <div>
+            <input type="radio" id="title" name="search" value="intitle">
+            <label for="title">title</label>
+        </div>
+        <div>
+            <input type="radio" id="author" name="search" value="inauthor">
+            <label for="author">author</label><br>
+        </div>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
