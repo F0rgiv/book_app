@@ -13,13 +13,22 @@
 </head>
 
 <body>
+    <header>
+        <h1>best books!</h1>
+    </header>
+    <div>
+        Search by Title or Auther
+    </div>
     <form action="/searches/new" method="POST">
-        <label for="Search String"></label>
-        <input type="text" name="search_string">
-        <input type="radio" id="title" name="search" value="intitle">
-        <label for="title">title</label><br>
-        <input type="radio" id="author" name="search" value="inauthor">
-        <label for="author">author</label><br>
+        <input type="text" name="search_string", placeholder="Enter your search string">
+        <div>
+            <input type="radio" id="title" name="search" value="intitle">
+            <label for="title">title</label>
+        </div>
+        <div>
+            <input type="radio" id="author" name="search" value="inauthor">
+            <label for="author">author</label><br>
+        </div>
         <input type="submit">
     </form>
 </body>

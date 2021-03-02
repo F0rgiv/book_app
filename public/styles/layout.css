@@ -1,0 +1,53 @@
+body{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 80%;
+    grid-template-rows: 50px 30px auto;
+}
+
+body > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+color: white;
+background-color: black;
+}
+
+div{
+    color: white;
+    background-color: #464646;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 80%;
+    grid-template-rows: auto auto auto auto;
+}
+
+form > * {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+li > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+img {
+    margin: auto;
+    margin-top: 40px;
+}
