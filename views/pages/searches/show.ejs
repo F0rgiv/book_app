@@ -20,19 +20,18 @@
         Here are the results!
     </div>
     <ul>
-        <% for(let i=0; i < books.length; i++){ %>
-            <li>
-                <img src="<%= books[i].img %>" alt="">
+        <li>
+            <% books.forEach(book=> { %>
+                <img src="<%= book.img %>" alt="">
                 <h1>
-                    <%= books[i].title %>
+                    <%= book.title %>
                 </h1>
                 <h1>
-                    <%= books[i].author %>
+                    <%= book.author %>
                 </h1>
-                <p>description: <%= books[i].description %>
-                </p>
-            </li>
-            <% } %>
+                <p>description: <%= book.description %> </p>
+            <% }) %>
+        </li>
     </ul>
 </body>
 
