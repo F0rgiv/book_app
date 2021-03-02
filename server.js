@@ -22,7 +22,7 @@ app.get('/', home);
 app.get('/hello', home);
 app.get('/searches/new', getBookQurie)
 app.post('/searches/new', getBooks)
-// app.post('/book/:id', getBook) access with req.perams.id
+app.get('/books/:id', getBook)
 // app.post('/book', saveBook)
 
 // ======================================= Rout Handelars =======================================
@@ -55,22 +55,12 @@ function getBooks(req, res) {
         }).catch(handelError(res));
 };
 
-function insertArrIntoSql(arr, tableAndFields) {
-    // create db querie settings
-    let sqlInsert = `INSERT INTO ${tableAndFields} VALUES(`;
-    // Add $n and closing )
-    arr.forEach(element, index => sqlInsert.concat(`$${index + 1} `)).concat(')');
-
-    const sqlInsertArray = [
-        cityName,
-        location.display_name,
-        parseFloat(location.lat),
-        parseFloat(location.lon)
-    ];
-    // save in the db
-    client.query(sqlInsert, sqlInsertArray);
-    //send result to client
-    res.status(200).send(new Location(location, cityName));
+function getBook(req, res) {
+    const sqlSelect = `SELECT * FROM book WHERE id=${req.params.id}`;
+    client.query(sqlSelect)
+        .then(books => { res.render('pages/books/detail', { books: books.rows })
+        })
+        .catch(handelError(res))
 }
 
 //catchall / 404
@@ -84,6 +74,7 @@ function Book(obj) {
     this.title = obj.title;
     this.author = obj.authors ? obj.authors[0] : 'Unknown author';
     this.description = obj.description;
+    this.bookShealf = 'bookShealf'
 }
 
 // ======================================= start app =======================================

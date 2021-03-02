@@ -13,13 +13,16 @@
 <body>
     <header>
         <h1>best books!</h1>
+        <a href="/">Home</a>
     </header>
     <div>
        below are your <%= books.length %> saved books.
     </div>
     <ul>
         <li>
-            <%- include('books/show.ejs') %>
+            <%- include('./show.ejs') %>
+            <p>isbn: <%= books[0].isbn %> </p>
+            <p>BookShealf: <%= books[0].bookShealf %> </p>
         </li>
     </ul>
 </body>
