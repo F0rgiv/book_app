@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book browser</title>
+    <link rel="stylesheet" href="static/styles/base.css">
+</head>
+
+<body>
+    <form action="/searches/new" method="POST">
+        <label for="Search String"></label>
+        <input type="text" name="search_string">
+        <input type="radio" id="title" name="search" value="intitle">
+        <label for="title">title</label><br>
+        <input type="radio" id="author" name="search" value="inauthor">
+        <label for="author">author</label><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
