@@ -30,12 +30,16 @@ app.post('/searches/new', getBooks)
 function handelError(res) {
     return err => {
         // let user know we messed up
-        res.status(500).render("pages/error", {err: err});
+        res.status(500).render("pages/error", { err: err });
     };
 }
 
 function home(req, res) {
-    res.render('pages/index')
+    let sqlSelect = 'SELECT * FROM book'
+    client.query(sqlSelect)
+        .then(books => { res.render('pages/index', { books: books.rows })
+        })
+        .catch(handelError(res))
 };
 
 function getBookQurie(req, res) {
@@ -74,11 +78,11 @@ app.use('*', (request, response) => response.send('Sorry, that route does not ex
 
 //constructors
 function Book(obj) {
-    this.id = obj.id ? obj.id: '';
+    this.id = obj.id ? obj.id : '';
     this.isbn = obj.isbn;
     this.img_url = obj.imageLinks ? obj.imageLinks.thumbnail : "https://i.imgur.com/J5LVHEL.jpg";
     this.title = obj.title;
-    this.author = obj.authors ? obj.authors[0]: 'Unknown author';
+    this.author = obj.authors ? obj.authors[0] : 'Unknown author';
     this.description = obj.description;
 }
 

@@ -11,8 +11,11 @@ run
 ```npm install```
 this will install requred dependancies.
 
+create a PostgreSQL db navigate to this project folder and run: ```psql -d <db_name> -f schema.sql```
+
 Ensure you have the local env vars.
 PORT =<port number>
+DATABASE_URL =<postgreSQL connection URL>
 
 then run ```npm start server.js``` or ```nodemon```
 
