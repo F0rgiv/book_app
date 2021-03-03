@@ -42,6 +42,10 @@ form > * {
     margin: 10px;
 }
 
+form > div {
+    background-color: lightgray;
+}
+
 ul {
     display: grid;
     grid-template-columns: 100%;
@@ -59,11 +63,6 @@ li > div > * {
     align-items: center;
     margin: 15px;
 }
-/* 
-img {
-    margin: auto;
-    margin-top: 40px;
-} */
 
 input[type=submit]{
     color: honeydew;
