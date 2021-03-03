@@ -24,6 +24,7 @@ app.get('/searches/new', getBookQurie)
 app.post('/searches/new', getBooks)
 app.get('/books/:id', getBook)
 app.post('/books', saveBook)
+app.put('/books/:id', saveBook)
 
 // ======================================= Rout Handelars =======================================
 
