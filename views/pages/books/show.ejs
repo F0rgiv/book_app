@@ -9,5 +9,20 @@
         </h3>
         <p>description: <%= book.description %>
         </p>
+        <% if (typeof apiReturn != "undefined") {%>
+        <form action="/books" method="POST">
+            <input type="hidden" name="isbn" value="<%= book.isbn %>">
+            <input type="hidden" name="title" value="<%= book.title %>">
+            <input type="hidden" name="author" value="<%= book.author %>">
+            <input type="hidden" name="description" value="<%= book.description %>">
+            <input type="hidden" name="img_url" value="<%= book.img_url %>">
+            <input type="hidden" name="bookShealf" value="<%= book.bookShealf %>">
+            <input type="submit" value="Save and view details">
+        </form>
+        <% } else {%>
+            <form action="/books/<%= book.id %>">
+                <input type="submit" value="View Details" />
+            </form>
+        <% } %>
     </li>
     <% }) %>

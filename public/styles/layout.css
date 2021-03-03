@@ -5,6 +5,13 @@ body{
     grid-template-rows: 50px 30px auto;
 }
 
+.hidden {
+    visibility: hidden;
+    width: 0%;
+    height: 0%;
+    display: inline;
+}
+
 body > * {
     display: flex;
     justify-content: center;
