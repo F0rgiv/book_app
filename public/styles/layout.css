@@ -47,14 +47,27 @@ ul {
     grid-template-columns: 100%;
 }
 
-li > * {
+li > div {
+    margin: 10px;
+    background-color: lightgray;
+    color: black;
+}
+
+li > div > * {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 15px;
 }
-
+/* 
 img {
     margin: auto;
     margin-top: 40px;
+} */
+
+input[type=submit]{
+    color: honeydew;
+    background-color: black;
+    width: 150px;
+    margin-bottom: 25px;
 }

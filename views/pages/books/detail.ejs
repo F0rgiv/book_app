@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,20 +11,18 @@
     <link rel="stylesheet" href="/static/styles/layout.css">
     <link rel="stylesheet" href="/static/styles/modules.css">
 </head>
+
 <body>
     <header>
         <h1>best books!</h1>
         <a href="/">Home</a>
     </header>
     <div>
-       below are your <%= books.length %> saved books.
+        below are your <%= books.length %> saved books.
     </div>
     <ul>
-        <li>
-            <%- include('./show.ejs') %>
-            <p>isbn: <%= books[0].isbn %> </p>
-            <p>BookShealf: <%= books[0].bookShealf %> </p>
-        </li>
+        <%- include('./show.ejs') %>
     </ul>
 </body>
+
 </html>

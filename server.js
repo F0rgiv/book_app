@@ -62,7 +62,7 @@ function getBook(req, res) {
     const sqlSelect = `SELECT * FROM book WHERE id=${req.params.id}`;
     client.query(sqlSelect)
         .then(books => {
-            res.render('pages/books/detail', { books: books.rows })
+            res.render('pages/books/detail', { books: books.rows, apiDetail: true })
         })
         .catch(handelError(res))
 }
