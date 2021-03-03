@@ -25,6 +25,14 @@
                     </p>
                     <p>BookShealf: <%= book.bookShealf %>
                     </p>
+                    <div>
+                        <form action="/books/<%= book.id %>?_method=PUT">
+                            <input type="submit" value="update book" />
+                        </form>
+                        <form action="/books/<%= book.id %>?_method=DELETE">
+                            <input type="submit" value="delete book" />
+                        </form>
+                    </div>
                     <% } else {%>
                         <form action="/books/<%= book.id %>">
                             <input type="submit" value="View Details" />
