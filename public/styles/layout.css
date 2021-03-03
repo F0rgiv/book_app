@@ -5,6 +5,13 @@ body{
     grid-template-rows: 50px 30px auto;
 }
 
+.hidden {
+    visibility: hidden;
+    width: 0%;
+    height: 0%;
+    display: inline;
+}
+
 body > * {
     display: flex;
     justify-content: center;
@@ -16,7 +23,7 @@ color: white;
 background-color: black;
 }
 
-div{
+body > div{
     color: white;
     background-color: #464646;
 }
@@ -40,14 +47,32 @@ ul {
     grid-template-columns: 100%;
 }
 
-li > * {
+li > div {
+    margin: 10px;
+    background-color: lightgray;
+    color: black;
+}
+
+li > div > * {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 15px;
 }
-
+/* 
 img {
     margin: auto;
     margin-top: 40px;
+} */
+
+input[type=submit]{
+    color: honeydew;
+    background-color: black;
+    width: 150px;
+    margin-bottom: 25px;
+}
+
+.li-div {
+    background-color: lightgray;
+    margin-top: 20px;
 }

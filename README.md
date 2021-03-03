@@ -8,10 +8,16 @@ Application for searching book information and displaing that to a user
 
 ## Getting Started
 run
-```npm install to install requred dependancies.```
+```npm install```
+this will install requred dependancies.
 
-Ensure you have the local env keys.
-PORT =port
+create a PostgreSQL db navigate to this project folder and run: ```psql -d <db_name> -f schema.sql```
+
+Ensure you have the local env vars.
+PORT =<port number>
+DATABASE_URL =<postgreSQL connection URL>
+
+then run ```npm start server.js``` or ```nodemon```
 
 ## Architecture
 This application uses express, ejs, superagent and dotenv to dynamically retreive book information from the web and format it into a view for the end user.

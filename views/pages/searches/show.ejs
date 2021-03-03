@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book browser</title>
-    <link rel="stylesheet" href="../../static/styles/reset.css">
-    <link rel="stylesheet" href="../../static/styles/base.css">
-    <link rel="stylesheet" href="../../static/styles/layout.css">
-    <link rel="stylesheet" href="../../static/styles/modules.css">
+    <link rel="stylesheet" href="/static/styles/reset.css">
+    <link rel="stylesheet" href="/static/styles/base.css">
+    <link rel="stylesheet" href="/static/styles/layout.css">
+    <link rel="stylesheet" href="/static/styles/modules.css">
 </head>
 
 <body>
@@ -20,19 +20,7 @@
         Here are the results!
     </div>
     <ul>
-        <% for(let i=0; i < books.length; i++){ %>
-            <li>
-                <img src="<%= books[i].img %>" alt="">
-                <h1>
-                    <%= books[i].title %>
-                </h1>
-                <h1>
-                    <%= books[i].author %>
-                </h1>
-                <p>description: <%= books[i].description %>
-                </p>
-            </li>
-            <% } %>
+        <%- include('../books/show.ejs') %>
     </ul>
 </body>
 

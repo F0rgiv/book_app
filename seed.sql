@@ -1,0 +1,3 @@
+INSERT INTO book (isbn, img_url, title, author, description) VALUES('isbn1', 'https://i.imgur.com/J5LVHEL.jpg', 'book1', 'james', 'a book about stuff that is cool');
+INSERT INTO book (isbn, img_url, title, author, description) VALUES('isbn2', 'https://i.imgur.com/J5LVHEL.jpg', 'book2', 'james', 'a book about stuff that is cool');
+INSERT INTO book (isbn, img_url, title, author, description) VALUES('isbn3', 'https://i.imgur.com/J5LVHEL.jpg', 'book3', 'james', 'a book about stuff that is cool');
