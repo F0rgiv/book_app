@@ -7,7 +7,7 @@ const app = express();
 const superagent = require('superagent');
 const path = require('path')
 const client = require('./client');
-
+const methodOverride = require('method-override');
 
 // ======================================= app config =======================================
 
@@ -15,6 +15,7 @@ const PORT = process.env.PORT;
 app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 // ======================================= routs =======================================
 
