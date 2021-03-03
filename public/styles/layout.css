@@ -23,7 +23,7 @@ color: white;
 background-color: black;
 }
 
-div{
+body > div{
     color: white;
     background-color: #464646;
 }
@@ -70,4 +70,9 @@ input[type=submit]{
     background-color: black;
     width: 150px;
     margin-bottom: 25px;
+}
+
+.li-div {
+    background-color: lightgray;
+    margin-top: 20px;
 }
