@@ -7,7 +7,7 @@ const app = express();
 const superagent = require('superagent');
 const path = require('path')
 const client = require('./client');
-
+const methodOverride = require('method-override');
 
 // ======================================= app config =======================================
 
@@ -15,15 +15,19 @@ const PORT = process.env.PORT;
 app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 // ======================================= routs =======================================
 
 app.get('/', home);
 app.get('/hello', home);
-app.get('/searches/new', getBookQurie)
-app.post('/searches/new', getBooks)
-app.get('/books/:id', getBook)
-app.post('/books', saveBook)
+app.get('/searches/new', getBookQurie);
+app.post('/searches/new', getBooks);
+app.get('/books/:id', getBook);
+app.post('/books', saveBook);
+app.get('/books/:id/update', getBookForm);
+app.put('/books/:id', updateBook);
+app.delete('/books/:id', deleteBook);
 
 // ======================================= Rout Handelars =======================================
 
@@ -78,6 +82,41 @@ function saveBook(req, res) {
     ];
     client.query(sqlString, sqlArray)
         .then(result => res.redirect(`/books/${result.rows[0].id}`))
+        .catch(handelError(res))
+}
+
+function getBookForm(req, res) {
+    const sqlSelect = `SELECT * FROM book WHERE id=${req.params.id}`;
+    client.query(sqlSelect)
+        .then(books => { res.render('pages/books/edit', { book: books.rows[0] }) })
+        .catch(handelError(res))
+}
+
+function deleteBook(req, res) {
+    console.log('here');
+    const sqlString = 'DELETE from book WHERE id=$1'
+    const sqlArray = [
+        req.params.id
+    ];
+    client.query(sqlString, sqlArray)
+        .then(res.redirect('/'))
+        .catch(handelError(res))
+}
+
+function updateBook(req, res) {
+    // console.log(req.body);
+    const sqlString = 'UPDATE book SET isbn=$1, img_url=$2, title=$3, author=$4, description=$5 WHERE id=$6;';
+    const sqlArray = [
+        req.body.isbn,
+        req.body.img_url,
+        req.body.title,
+        req.body.author,
+        req.body.description,
+        req.params.id
+    ];
+
+    client.query(sqlString, sqlArray)
+        .then(res.redirect(`/books/${req.params.id}`))
         .catch(handelError(res))
 }
 

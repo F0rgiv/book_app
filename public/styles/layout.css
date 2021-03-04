@@ -16,6 +16,7 @@ body > * {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 380px;
 }
 
 header{
@@ -47,14 +48,21 @@ form > div {
 }
 
 ul {
-    display: grid;
-    grid-template-columns: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ul > li {
+    margin: auto;
 }
 
 li > div {
     margin: 10px;
     background-color: lightgray;
     color: black;
+    max-width: 450px;
+    height: 100%;
 }
 
 li > div > * {
